@@ -4,6 +4,7 @@ specifiers:
   '@types/react': ^18.0.24
   '@types/react-dom': ^18.0.8
   '@vitejs/plugin-react': ^2.2.0
+  '@windicss/plugin-icons': ^1.0.2
   i: ^0.3.7
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -20,6 +21,7 @@ devDependencies:
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.9
   '@vitejs/plugin-react': 2.2.0_vite@3.2.4
+  '@windicss/plugin-icons': 1.0.2
   i: 0.3.7
   typescript: 4.9.3
   vite: 3.2.4
@@ -424,6 +426,10 @@ packages:
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@windicss/plugin-icons/1.0.2:
+    resolution: {integrity: sha512-PN6+y9TwEFQn+x6hmCUbCH2YzCfLyImcgQZQQAZ3kCZvqvZDyfKgS9TuhHY1Y0vp12lO6ULFUWpH6YIVGOPM6A==}
     dev: true
 
   /@windicss/plugin-utils/1.8.8:
