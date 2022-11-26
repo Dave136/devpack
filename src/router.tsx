@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Root from './routes/root';
 import Home from './pages/home';
 import ErrorPage from './pages/error';
-import Product from './pages/product';
+import Product, { loader as productLoader } from './pages/product';
 import User from './pages/user';
 import Diagram from './pages/diagram';
 
@@ -19,6 +19,7 @@ export const router = createBrowserRouter([
       {
         path: '/product',
         element: <Product />,
+        loader: productLoader,
       },
       {
         path: '/user',
