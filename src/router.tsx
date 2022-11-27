@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Root from './routes/root';
-import Home from './pages/home';
-import ErrorPage from './pages/error';
-import Product, { loader as productLoader } from './pages/product';
+import Home from './routes/home';
+import ErrorPage from './routes/error';
+import Product, { loader as productLoader } from './routes/product';
 import User, { loader as userLoader } from './routes/user';
-import Diagram from './pages/diagram';
+import Diagram from './routes/diagram';
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Home />,
       },
       {

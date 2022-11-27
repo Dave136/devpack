@@ -5,7 +5,7 @@ const ErrorPage = () => {
   console.log(error);
 
   return (
-    <section className="max-w-lg mx-auto mt-52 text-center">
+    <section className="max-w-lg mx-auto mt-52 text-center text-gray-500 dark:(bg-dark-700 text-gray-300)">
       <header className="flex items-center justify-center">
         <h1 className="text-3xl">Oops!</h1>
         <i className="icon-danger ml-2"></i>

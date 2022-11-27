@@ -14,8 +14,8 @@ const Pagination = ({ pageCount, onPageChange, page = 1 }: Props) => {
       breakLabel={'...'}
       pageCount={pageCount}
       forcePage={page - 1}
-      marginPagesDisplayed={2}
-      pageRangeDisplayed={5}
+      marginPagesDisplayed={1}
+      pageRangeDisplayed={1}
       containerClassName="flex list-none items-center"
       previousLinkClassName="p-2 px-4 text-sm border border-gray-300 rounded-md mr-3 cursor-pointer dark:(border-transparent bg-dark-400)"
       breakClassName="p-2 px-4 text-sm border border-gray-300 rounded-md mr-3 cursor-pointer dark:(border-transparent bg-dark-400)"

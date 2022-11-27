@@ -6,9 +6,11 @@ import { getUsers } from '@/services/user';
 import UserSkeleton from '@/components/user/user-skeleton';
 import Pagination from '@/components/pagination';
 import UserModal from '@/components/user/user-modal';
-import usePageCount from '@/hooks/usePageCount';
-import type { ApiUserResponse, User as IUser } from '@/types';
+import usePageCount from '@/hooks/use-page-count';
+import useViewport from '@/hooks/use-viewport';
+import useLockOverflow from '@/hooks/use-lock-overflow';
 import 'react-base-table/styles.css';
+import type { ApiUserResponse, User as IUser } from '@/types';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
@@ -35,6 +37,9 @@ const User = () => {
   });
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const viewport = useViewport();
+
+  useLockOverflow(showModal);
 
   const closeModal = () => {
     setShowModal(false);
@@ -104,6 +109,13 @@ const User = () => {
     },
   ];
 
+  const getTableStyle = () => {
+    if (viewport.mobile || viewport.table) {
+      return 'overflow-x-scroll';
+    }
+    return '';
+  };
+
   return (
     <>
       <div className="max-w-2xl mx-auto my-8">
@@ -111,32 +123,34 @@ const User = () => {
           <UserSkeleton />
         ) : data.users.length ? (
           <>
-            <Table
-              data={data.users}
-              width={720}
-              height={400}
-              emptyRenderer={emptyRenderer}
-              rowEventHandlers={{
-                onClick: ({ rowData }) => {
-                  setUser(rowData);
-                  setShowModal(true);
-                },
-              }}
-              className="cursor-pointer dark:shadow-none dark:bg-dark-500"
-              headerClassName="dark:(bg-dark-300 text-gray-400 border-transparent)"
-              rowClassName="dark:(bg-dark-400 border-dark-200)"
-            >
-              {columns.map((column) => (
-                <Column
-                  title={column.title}
-                  key={column.key}
-                  dataKey={column.dataKey}
-                  width={column.width}
-                  headerClassName={column.headerClassName}
-                  cellRenderer={column?.cellRenderer && column.cellRenderer}
-                />
-              ))}
-            </Table>
+            <div className={getTableStyle()}>
+              <Table
+                data={data.users}
+                width={660}
+                height={400}
+                emptyRenderer={emptyRenderer}
+                rowEventHandlers={{
+                  onClick: ({ rowData }) => {
+                    setUser(rowData);
+                    setShowModal(true);
+                  },
+                }}
+                className="cursor-pointer dark:shadow-none dark:bg-dark-500"
+                headerClassName="dark:(bg-dark-300 text-gray-400 border-transparent)"
+                rowClassName="dark:(bg-dark-400 border-dark-200)"
+              >
+                {columns.map((column) => (
+                  <Column
+                    title={column.title}
+                    key={column.key}
+                    dataKey={column.dataKey}
+                    width={column.width}
+                    headerClassName={column.headerClassName}
+                    cellRenderer={column?.cellRenderer && column.cellRenderer}
+                  />
+                ))}
+              </Table>
+            </div>
             <div className="py-8 mt-8 flex justify-center">
               <Pagination
                 pageCount={pageCount}

@@ -3,7 +3,7 @@ import useStore from '@/store/product';
 const ProductSelectCard = () => {
   const { sizes, selectedSize, updateRowSize } = useStore();
   return (
-    <div className="flex gap-2 items-center">
+    <div className="hidden flex gap-2 items-center lg:flex">
       <p className="text-xs text-gray-700 dark:text-gray-500">
         Elements by row:{' '}
       </p>

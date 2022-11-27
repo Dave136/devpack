@@ -3,6 +3,7 @@ import {
   IoBagOutline,
   IoShapesOutline,
 } from 'react-icons/io5';
+import { NavLink } from 'react-router-dom';
 
 const projects = [
   {
@@ -28,12 +29,12 @@ const Home = () => (
     <p className="text-center mt-4">Select an project</p>
     <div className="mt-12 flex flex-col gap-12 items-center justify-center mx-auto lg:(flex-row w-full)">
       {projects.map((project) => (
-        <a href={project.to}>
-          <div className="border border-gray-300 text-gray-500 shadow-xl p-6 rounded-md flex flex-col justify-center items-center gap-2 cursor-pointer transition hover:(shadow-2xl border-gray-400 text-gray-600) active:(shadow-2xl border-gray-400 text-gray-600) dark:(border-transparent bg-dark-500 text-gray-400) lg:(w-42 h-38)">
+        <NavLink to={project.to}>
+          <div className="border border-gray-300 text-gray-500 shadow-xl w-62 h-38 rounded-md flex flex-col justify-center items-center gap-2 cursor-pointer transition hover:(shadow-2xl border-gray-400 text-gray-600) active:(shadow-2xl border-gray-400 text-gray-600) dark:(border-transparent bg-dark-500 text-gray-400) lg:(w-42 h-38)">
             <project.icon size="2em" />
             <h4 className="text-sm">{project.text}</h4>
           </div>
-        </a>
+        </NavLink>
       ))}
     </div>
   </div>

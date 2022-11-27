@@ -27,29 +27,43 @@ const UserModal = ({ user, active, onClose }: Props) => {
             </p>
           </div>
         </header>
-        <hr className="h-[1px] bg-light-900 mt-6 w-full" />
+        <hr className="bg-light-900 mt-6 w-full dark:border-dark-300" />
         <section className="mt-6">
           <header>
-            <h3 className="font-bold text-gray-900">Información</h3>
+            <h3 className="font-bold text-gray-700 text-xl dark:text-gray-300">
+              Información
+            </h3>
           </header>
-          <div className="grid grid-cols-1 gap-4 mt-6">
+          <div className="grid grid-cols-[40%_60%] gap-2 mt-6 lg:gap-4">
             <p className="text-gray-400">
               Nombre:{' '}
-              <span className="text-gray-900 ml-2">{user.firstName}</span>
+              <span className="text-gray-700 ml-2 dark:text-gray-300">
+                {user.firstName}
+              </span>
             </p>
             <p className="text-gray-400">
               Apellido:{' '}
-              <span className="text-gray-900 ml-2">{user.lastName}</span>
+              <span className="text-gray-700 ml-2 dark:text-gray-300">
+                {user.lastName}
+              </span>
             </p>
             <p className="text-gray-400">
-              Edad: <span className="text-gray-900 ml-2">{user.age}</span>
+              Edad:{' '}
+              <span className="text-gray-700 ml-2 dark:text-gray-300">
+                {user.age}
+              </span>
             </p>
             <p className="text-gray-400">
-              Email: <span className="text-gray-900 ml-2">{user.email}</span>
+              Email:{' '}
+              <span className="text-gray-700 ml-2 dark:text-gray-300">
+                {user.email}
+              </span>
             </p>
             <p className="text-gray-400">
               Usuario:{' '}
-              <span className="text-gray-900 ml-2">{user.username}</span>
+              <span className="text-gray-700 ml-2 dark:text-gray-300">
+                {user.username}
+              </span>
             </p>
           </div>
         </section>

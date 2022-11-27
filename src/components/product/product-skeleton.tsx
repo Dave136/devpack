@@ -1,4 +1,6 @@
 import useStore from '@/store/product';
+import useViewport from '@/hooks/use-viewport';
+import { getProductWrapperStyle } from '@/utils';
 
 const CardSkeleton = () => (
   <div className="w-62 border border-light-400 rounded-md dark:border-dark-300">
@@ -19,23 +21,24 @@ const CardSkeleton = () => (
 
 export const PaginationSkeleton = () => (
   <div className="w-full h-16 flex items-center gap-4 justify-center">
-    <div className="w-22 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
-    <div className="w-12 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
-    <div className="w-12 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
-    <div className="w-12 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
-    <div className="w-12 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
-    <div className="w-22 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
+    <div className="w-14 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
+    <div className="w-10 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
+    <div className="w-10 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
+    <div className="w-10 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
+    <div className="hidden w-10 bg-zinc-200 h-8 rounded-md dark:bg-dark-300 lg:block"></div>
+    <div className="w-14 bg-zinc-200 h-8 rounded-md dark:bg-dark-300"></div>
   </div>
 );
 
 const ProductSkeleton = () => {
   const { selectedSize } = useStore();
+  const viewport = useViewport();
 
   return (
     <div className="animate-pulse w-full">
       <div
-        className="grid grid-cols-4 gap-16"
-        style={{ gridTemplateColumns: `repeat(${selectedSize}, 1fr)` }}
+        className="grid grid-cols-1 place-items-center gap-8 lg:(grid-cols-4 gap-8)"
+        style={getProductWrapperStyle(viewport, selectedSize)}
       >
         <CardSkeleton />
         <CardSkeleton />

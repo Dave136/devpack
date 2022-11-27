@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
-import { IoBagOutline, IoSadOutline } from 'react-icons/io5';
+import { IoSadOutline } from 'react-icons/io5';
 import ProductModal from '@/components/product/product-modal';
 import productStore from '@/store/product';
 import Pagination from '@/components/pagination';
 import { getProducts } from '@/services/product';
-import usePageCount from '@/hooks/usePageCount';
+import usePageCount from '@/hooks/use-page-count';
 import ProductSkeleton from '@/components/product/product-skeleton';
 import ProductCard from '@/components/product/product-card';
 import ProductSelectCard from '@/components/product/product-select-card';
+import useViewport from '@/hooks/use-viewport';
+import { getProductWrapperStyle } from '@/utils';
 import type { ApiProductResponse, Product as IProduct } from '@/types';
+import useLockOverflow from '@/hooks/use-lock-overflow';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
@@ -31,6 +34,9 @@ const Product = () => {
   const { selectedSize } = productStore();
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const viewport = useViewport();
+
+  useLockOverflow(showModal);
 
   const closeModal = () => {
     setShowModal(false);
@@ -52,24 +58,19 @@ const Product = () => {
   };
 
   return (
-    <div>
-      <header className="flex items-center justify-end my-8 mx-42">
-        {/* <h2 className="text-3xl my-8 flex items-center gap-2">
-          <IoBagOutline /> Store
-        </h2> */}
+    <div className={showModal ? `overflow-hidden` : 'overflow-auto'}>
+      <header className="flex items-center justify-end mx-42 lg:my-8">
         <ProductSelectCard />
       </header>
       <div className="flex justify-center">
-        <div className="">
+        <div className="w-full lg:w-auto">
           {navigation.state === 'loading' ? (
             <ProductSkeleton />
           ) : data?.products.length ? (
             <>
               <ul
-                className="grid grid-cols-4 gap-8"
-                style={{
-                  gridTemplateColumns: `repeat(${selectedSize}, 1fr)`,
-                }}
+                className="grid grid-cols-1 place-items-center gap-8 lg:(grid-cols-4 gap-8)"
+                style={getProductWrapperStyle(viewport, selectedSize)}
               >
                 {data?.products.map((product, index) => (
                   <ProductCard
