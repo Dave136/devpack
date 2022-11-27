@@ -138,6 +138,7 @@ const User = () => {
             <div className="py-8 mt-8 flex justify-center">
               <Pagination
                 pageCount={pageCount}
+                page={currentPage}
                 onPageChange={handlePageChange}
               />
             </div>

@@ -2,16 +2,18 @@ import ReactPaginate from 'react-paginate';
 
 type Props = {
   pageCount: number;
+  page?: number;
   onPageChange: (selectedItem: { selected: number }) => void;
 };
 
-const Pagination = ({ pageCount, onPageChange }: Props) => {
+const Pagination = ({ pageCount, onPageChange, page = 1 }: Props) => {
   return (
     <ReactPaginate
       previousLabel="Prev"
       nextLabel="Next"
       breakLabel={'...'}
       pageCount={pageCount}
+      forcePage={page - 1}
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       containerClassName="flex list-none items-center"

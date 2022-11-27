@@ -28,7 +28,7 @@ const Product = () => {
   const pageCount = usePageCount({
     total: data?.total,
   });
-  const { sizes, selectedSize } = productStore();
+  const { selectedSize } = productStore();
   const navigate = useNavigate();
   const navigation = useNavigation();
 
@@ -85,6 +85,7 @@ const Product = () => {
               <div className="py-8 mt-8 flex justify-center">
                 <Pagination
                   pageCount={pageCount}
+                  page={currentPage}
                   onPageChange={handlePageChange}
                 />
               </div>
