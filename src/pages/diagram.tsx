@@ -63,7 +63,7 @@ const Diagram = () => {
   );
 
   return (
-    <div className="flex flex-col flex-grow h-auto lg:flex-row relative">
+    <div className="flex flex-col flex-grow h-auto lg:flex-row lg:gap-8 relative">
       <ReactFlowProvider>
         <div
           className="flex-grow-1 h-full min-h-xl w-full"
@@ -78,7 +78,7 @@ const Diagram = () => {
             onInit={setReactFlowInstance as unknown as OnInit<any, any>}
             onDrop={onDrop}
             onDragOver={onDragOver}
-            className="w-full min-h-xl"
+            className="w-full min-h-xl dark:bg-dark-500"
             nodeTypes={nodeTypes}
             fitView
           >

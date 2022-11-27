@@ -4,9 +4,11 @@ const ProductSelectCard = () => {
   const { sizes, selectedSize, updateRowSize } = useStore();
   return (
     <div className="flex gap-2 items-center">
-      <p className="text-xs text-gray-700">Items length: </p>
+      <p className="text-xs text-gray-700 dark:text-gray-500">
+        Elements by row:{' '}
+      </p>
       <select
-        className="border bg-transparent px-2"
+        className="border bg-transparent rounded-sm px-2 dark:(border-gray-400 text-gray-400)"
         onChange={(e) => {
           const newVal = Number(e.target.value);
           updateRowSize(newVal);

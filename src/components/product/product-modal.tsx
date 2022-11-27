@@ -38,23 +38,33 @@ const ProductModal = ({ product, active, onClose }: Props) => {
         </div>
         <div className="w-full">
           <h3 className="text-2xl">{product.title}</h3>
-          <p className="text-sm text-gray-600 my-4">
+          <p className="text-sm text-gray-600 my-4 dark:text-gray-500">
             Category: <span className="font-bold ml-1">{product.category}</span>
           </p>
-          <hr className="w-full" />
+          <hr className="w-full dark:(border-gray-700)" />
           <div className="my-4">
             <h5 className="text-lg">Description</h5>
-            <p className="mt-2 text-gray-600">{product.description}</p>
+            <p className="mt-2 text-gray-600 text-sm dark:text-gray-500">
+              {product.description}
+            </p>
           </div>
-          <hr className="my-4" />
+          <hr className="my-4 dark:(border-gray-700)" />
           <div>
             <p className="pt-2 text-sm">
-              Brand: <span className="text-gray-600">{product.brand}</span>
+              Brand:{' '}
+              <span className="text-gray-600 dark:text-gray-500">
+                {product.brand}
+              </span>
             </p>
             <p className="pt-2 text-sm">
-              Stock: <span className="text-gray-600">{product.stock}</span>
+              Stock:{' '}
+              <span className="text-gray-600 dark:text-gray-500">
+                {product.stock}
+              </span>
             </p>
-            <p className="text-3xl font-bold mt-8">${product.price}</p>
+            <p className="text-3xl font-bold mt-8 dark:text-gray-300">
+              ${product.price}
+            </p>
           </div>
         </div>
       </div>

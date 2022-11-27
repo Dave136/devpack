@@ -62,7 +62,7 @@ const User = () => {
       dataKey: 'image',
       width: 150,
       align: 'center',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       cellRenderer: ({ rowData }: { rowData: IUser }) => (
         <img src={rowData.image} className="w-6" />
       ),
@@ -71,35 +71,35 @@ const User = () => {
       title: 'Usuario',
       key: 'username',
       dataKey: 'username',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 150,
     },
     {
       title: 'Nombre',
       key: 'firstName',
       dataKey: 'firstName',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 150,
     },
     {
       title: 'Apellido',
       key: 'lastName',
       dataKey: 'lastName',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 150,
     },
     {
       title: 'Edad',
       key: 'age',
       dataKey: 'age',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 80,
     },
     {
       title: 'IP',
       key: 'ip',
       dataKey: 'ip',
-      headerClassName: 'text-[10px] font-bold text-gray-900',
+      headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 250,
     },
   ];
@@ -122,7 +122,9 @@ const User = () => {
                   setShowModal(true);
                 },
               }}
-              className="cursor-pointer"
+              className="cursor-pointer dark:shadow-none dark:bg-dark-500"
+              headerClassName="dark:(bg-dark-300 text-gray-400 border-transparent)"
+              rowClassName="dark:(bg-dark-400 border-dark-200)"
             >
               {columns.map((column) => (
                 <Column

@@ -1,0 +1,16 @@
+.BaseTable__table {
+  @apply outline-none;
+}
+
+/* Dark mode for reactflow-controls */
+.react-flow__controls {
+  @apply dark:(bg-dark-500 border border-dark-100);
+}
+
+.react-flow__controls-button {
+  @apply dark:(bg-dark-500 border-dark-100 fill-current);
+}
+
+.react-flow__attribution {
+  @apply dark:bg-dark-500;
+}

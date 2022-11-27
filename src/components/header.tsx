@@ -5,6 +5,7 @@ import {
   IoBagOutline,
   IoShapesOutline,
 } from 'react-icons/io5';
+import DarkMode from './dark-mode';
 
 const activeLink = ({
   isActive,
@@ -14,7 +15,7 @@ const activeLink = ({
   isPending: boolean;
 }): string => {
   const base =
-    'flex items-center transition ease p-5 rounded-md hover:(text-gray-500) active:(text-gray-500) lg:(p-3 gap-2)';
+    'flex items-center transition ease p-5 rounded-md text-sm hover:(text-gray-500) active:(text-gray-500) lg:(p-3 gap-2)';
   return isActive
     ? `${base} text-gray-500 font-bold`
     : isPending
@@ -24,7 +25,7 @@ const activeLink = ({
 
 const Header = () => (
   <header className="flex w-full justify-center min-h-auto my-4 rounded-md absolute lg:(relative w-2xl my-2)">
-    <nav className="flex w-full mx-12 gap-4 p-2 flex justify-evenly items-center rounded-md border transition ease-in shadow-lg sticky hover:shadow-xl">
+    <nav className="flex w-full mx-12 gap-4 p-2 flex justify-evenly items-center rounded-md transition ease-in shadow-lg sticky hover:shadow-xl dark:(bg-dark-500)">
       <NavLink to="/" className={activeLink}>
         <IoHomeOutline size="1.6em" />
         <p>Home</p>
@@ -41,6 +42,7 @@ const Header = () => (
         <IoShapesOutline size="1.6em" />
         <p>Diagram</p>
       </NavLink>
+      <DarkMode />
     </nav>
   </header>
 );
