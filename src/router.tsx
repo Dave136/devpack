@@ -3,7 +3,7 @@ import Root from './routes/root';
 import Home from './pages/home';
 import ErrorPage from './pages/error';
 import Product, { loader as productLoader } from './pages/product';
-import User from './pages/user';
+import User, { loader as userLoader } from './routes/user';
 import Diagram from './pages/diagram';
 
 export const router = createBrowserRouter([
@@ -24,6 +24,7 @@ export const router = createBrowserRouter([
       {
         path: '/user',
         element: <User />,
+        loader: userLoader,
       },
       {
         path: '/diagram',

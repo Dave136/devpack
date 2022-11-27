@@ -15,7 +15,7 @@ type Props = {
 
 const ProductModal = ({ product, active, onClose }: Props) => {
   return (
-    <Modal active={active} onClose={onClose}>
+    <Modal active={active} onClose={onClose} size="large">
       <div className="flex gap-8">
         <div className="w-md h-96">
           <Swiper

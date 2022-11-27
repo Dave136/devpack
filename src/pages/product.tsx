@@ -8,8 +8,8 @@ import { getProducts } from '@/services/product';
 import usePageCount from '@/hooks/usePageCount';
 import ProductSkeleton from '@/components/product/product-skeleton';
 import ProductCard from '@/components/product/product-card';
-import type { ApiProductResponse, Product as IProduct } from '@/types';
 import ProductSelectCard from '@/components/product/product-select-card';
+import type { ApiProductResponse, Product as IProduct } from '@/types';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
