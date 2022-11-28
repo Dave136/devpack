@@ -8,11 +8,11 @@ import { getProducts } from '@/services/product';
 import usePageCount from '@/hooks/use-page-count';
 import ProductSkeleton from '@/components/product/product-skeleton';
 import ProductCard from '@/components/product/product-card';
-import ProductSelectCard from '@/components/product/product-select-card';
+import ProductSelectCard from '@/components/product/product-select-row';
 import useViewport from '@/hooks/use-viewport';
+import useLockOverflow from '@/hooks/use-lock-overflow';
 import { getProductWrapperStyle } from '@/utils';
 import type { ApiProductResponse, Product as IProduct } from '@/types';
-import useLockOverflow from '@/hooks/use-lock-overflow';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);

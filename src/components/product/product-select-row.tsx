@@ -1,6 +1,6 @@
 import useStore from '@/store/product';
 
-const ProductSelectCard = () => {
+const ProductSelectRow = () => {
   const { sizes, selectedSize, updateRowSize } = useStore();
   return (
     <div className="hidden flex gap-2 items-center lg:flex">
@@ -30,4 +30,4 @@ const ProductSelectCard = () => {
   );
 };
 
-export default ProductSelectCard;
+export default ProductSelectRow;

@@ -8,9 +8,9 @@ import ReactFlow, {
   type NodeTypes,
 } from 'reactflow';
 import Sidebar from '../components/diagram/sidebar';
+import CustomNode from '../components/diagram/custom-node';
 import useStore from '../store/diagram';
 import { generateId } from '../utils';
-import CustomNode from '../components/diagram/custom-node';
 import 'reactflow/dist/style.css';
 
 const nodeTypes: NodeTypes = {

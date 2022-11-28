@@ -1,7 +1,6 @@
 import { axios } from '../config/axios';
 import { ApiProductResponse } from '@/types';
-
-const LIMIT = 10;
+import { PAGE_LIMIT } from '@/constants';
 
 type GetProducts = (params: {
   page?: number;
@@ -10,7 +9,7 @@ type GetProducts = (params: {
 export const getProducts: GetProducts = async ({ page = 0 }) => {
   try {
     const { data } = await axios.get<ApiProductResponse>(
-      `/products?limit=${LIMIT}&skip=${LIMIT * (page - 1)}`
+      `/products?limit=${PAGE_LIMIT}&skip=${PAGE_LIMIT * (page - 1)}`
     );
     return data;
   } catch (error) {

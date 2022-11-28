@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
+import { PAGE_LIMIT } from '@/constants';
 
-const PAGE_LIMIT = 10;
+type UsePageCountParams = {
+  total: number;
+};
 
-const usePageCount = ({ total }: { total: number }) => {
+const usePageCount = ({ total }: UsePageCountParams) => {
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {

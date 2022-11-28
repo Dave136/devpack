@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 
+export type Viewport = {
+  mobile: boolean;
+  table: boolean;
+  laptop: boolean;
+  desktop: boolean;
+};
+
 const MOBILE_SIZE = 640;
 const TABLET_SIZE = 768;
 const LAPTOP_SIZE = 1024;
-const DESKTOP_SIZE = 1536;
 
-const useViewport = () => {
+const useViewport = (): Viewport => {
   const [viewport, setViewport] = useState({
     mobile: false,
     table: false,

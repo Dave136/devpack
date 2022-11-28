@@ -1,4 +1,3 @@
-// type CustomTypes = 'custom' | 'page' | 'element' | 'element-item';
 import {
   IoCreateOutline,
   IoReaderOutline,

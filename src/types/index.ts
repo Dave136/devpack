@@ -88,3 +88,5 @@ export interface ApiProductResponse extends ApiMetadata {
 export interface ApiUserResponse extends ApiMetadata {
   users: User[];
 }
+
+export type Viewport = 'mobile' | 'tablet' | 'laptop' | 'desktop';

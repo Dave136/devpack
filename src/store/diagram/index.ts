@@ -22,7 +22,7 @@ export type NodeData = {
   subTitle?: string;
 };
 
-type RFState = {
+type State = {
   nodes: Node[];
   edges: Edge[];
   onNodesChange: OnNodesChange;
@@ -32,7 +32,7 @@ type RFState = {
   updateNode: (nodeId: string, data: Omit<NodeData, 'color'>) => void;
 };
 
-const useStore = create<RFState>((set, get) => ({
+const useStore = create<State>((set, get) => ({
   nodes: initialNodes,
   edges: initialEdges,
   onNodesChange: (changes: NodeChange[]) => {
