@@ -1,15 +1,15 @@
 <div align="center">
   <img width="180" src="./docs/logo.svg" alt="Collection App" />
 </div>
-<h1 align="center">Library</h1>
 
 <div align="center">
-   Multiple projects in one place 📚
+  <h1 align="center">Library</h1>
+   <p>Multiple projects in one place 📚</p>
 </div>
 
 <div align="center">
   <h3>
-    <a href="https://library-dev-app.netlify.app/">
+    <a href="https://react-library-dev.netlify.app/">
       Demo
     </a>
     <span> | </span>
@@ -21,7 +21,7 @@
 </div>
 
 <div align="center">
-  <img src="https://api.netlify.com/api/v1/badges/405d285e-8825-47e8-bc13-74b05fa03c16/deploy-status" />
+  <img src="https://api.netlify.com/api/v1/badges/78aa6416-c116-42af-8a43-b05f8a3b637d/deploy-status" />
 </div>
 
 <!-- TABLE OF CONTENTS -->
