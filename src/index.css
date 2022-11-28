@@ -14,3 +14,14 @@
 .react-flow__attribution {
   @apply dark:bg-dark-500;
 }
+
+/* Set custom styles for */
+.swiper-button-next,
+.swiper-button-prev {
+  --swiper-navigation-size: 1.5rem;
+  @apply text-dark-300 dark:text-white;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-dark-300 dark:bg-white;
+}
