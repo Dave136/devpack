@@ -26,7 +26,7 @@ const projects = [
 const Home = () => (
   <div>
     <h2 className="text-2xl text-center mt-8">Welcome!</h2>
-    <p className="text-center mt-4">Select an project</p>
+    <p className="text-center mt-4">Select a project</p>
     <div className="mt-12 flex flex-col gap-12 items-center justify-center mx-auto lg:(flex-row w-full)">
       {projects.map((project) => (
         <NavLink to={project.to}>
