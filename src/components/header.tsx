@@ -17,7 +17,7 @@ const activeLink = ({
   const base =
     'flex flex-col items-center transition ease p-5 rounded-md text-sm hover:(text-gray-500) active:(text-gray-500) lg:(flex-row p-3 gap-2)';
   return isActive
-    ? `${base} text-gray-700 font-bold`
+    ? `${base} text-gray-700 font-bold dark:text-gray-200`
     : isPending
     ? `${base} underline`
     : base;
