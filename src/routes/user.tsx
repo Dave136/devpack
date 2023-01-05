@@ -83,7 +83,6 @@ const User = () => {
       title: 'Usuario',
       key: 'username',
       dataKey: 'username',
-      sortable: true,
       headerClassName: 'text-[10px] font-bold text-gray-900 dark:text-gray-300',
       width: 150,
     },
