@@ -126,7 +126,7 @@ const User = () => {
   return (
     <>
       <div className="max-w-2xl mx-auto my-8">
-        <div>
+        <div className="mb-4">
           <Search q={q} />
         </div>
         <div className={getTableStyle()}>

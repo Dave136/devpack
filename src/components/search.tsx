@@ -17,11 +17,7 @@ const Search = ({ q }: { q: string }) => {
   }, [q]);
 
   return (
-    <Form
-      id="search-form"
-      role="search"
-      className="mb-4 flex items-center relative"
-    >
+    <Form id="search-form" role="search" className="flex items-center relative">
       <input
         id="q"
         aria-label="Search data"

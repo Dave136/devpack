@@ -13,21 +13,27 @@ import useLockOverflow from '@/hooks/use-lock-overflow';
 import { getProductWrapperStyle } from '@/utils';
 
 import type { ApiProductResponse, Product as IProduct } from '@/types';
+import Search from '@/components/search';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
   const page = Number(url.searchParams.get('page')) ?? 0;
+  const query = url.searchParams.get('q');
   const data = await getProducts({
     page,
+    query,
   });
-  return { data };
+  return { data, q: query };
 }
 
 const Product = () => {
   const [showModal, setShowModal] = useState(false);
   const [product, setProduct] = useState<IProduct | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const { data } = useLoaderData() as { data: ApiProductResponse };
+  const { data, q } = useLoaderData() as {
+    data: ApiProductResponse;
+    q: string;
+  };
   const pageCount = usePageCount({
     total: data?.total,
   });
@@ -58,10 +64,12 @@ const Product = () => {
 
   return (
     <div className={showModal ? `overflow-hidden` : 'overflow-auto'}>
-      <header className="flex items-center justify-end mx-42 lg:my-8">
+      <header className="flex items-center justify-between mx-42 lg:my-8">
+        <Search q={q} />
         <ProductSelectCard />
       </header>
       <div className="flex justify-center">
+        <div></div>
         <div className="w-full lg:w-auto">
           {data?.products.length ? (
             <>

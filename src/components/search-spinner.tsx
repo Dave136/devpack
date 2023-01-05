@@ -4,7 +4,7 @@ const SearchSpinner = () => (
       className="animate-spin inline-block w-5 h-5 border-4 border-t-gray-700 rounded-full"
       role="status"
     >
-      <span className="visually-hidden hidden">Loading...</span>
+      <span className="sr-only hidden">Loading...</span>
     </div>
   </div>
 );
