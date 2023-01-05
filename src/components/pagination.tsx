@@ -24,6 +24,7 @@ const Pagination = ({ pageCount, onPageChange, page = 1 }: Props) => {
       disabledClassName="cursor-not-allowed"
       activeLinkClassName="border-2 border-gray-700 dark:border-gray-600"
       onPageChange={onPageChange}
+      renderOnZeroPageCount={() => null}
     />
   );
 };
