@@ -8,12 +8,12 @@ import { getProducts } from '@/services/product';
 import usePageCount from '@/hooks/use-page-count';
 import ProductCard from '@/components/product/product-card';
 import ProductSelectCard from '@/components/product/product-select-row';
+import Search from '@/components/search';
 import useViewport from '@/hooks/use-viewport';
 import useLockOverflow from '@/hooks/use-lock-overflow';
 import { getProductWrapperStyle } from '@/utils';
 
 import type { ApiProductResponse, Product as IProduct } from '@/types';
-import Search from '@/components/search';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
