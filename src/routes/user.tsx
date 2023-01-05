@@ -11,6 +11,7 @@ import useLockOverflow from '@/hooks/use-lock-overflow';
 import 'react-base-table/styles.css';
 
 import type { ApiUserResponse, User as IUser } from '@/types';
+import Empty from '@/components/user/empty';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
@@ -44,19 +45,11 @@ const User = () => {
 
   const emptyRenderer = () => {
     if (navigation.state === 'loading') {
-      return (
-        <span className="w-full h-full flex justify-center items-center">
-          Getting data ...
-        </span>
-      );
+      return <Empty>Getting data...</Empty>;
     }
 
     if (!data.users.length) {
-      return (
-        <span className="w-full h-full flex justify-center items-center">
-          No data
-        </span>
-      );
+      return <Empty>No users found</Empty>;
     }
   };
 
