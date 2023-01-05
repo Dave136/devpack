@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { IoSadOutline } from 'react-icons/io5';
 import ProductModal from '@/components/product/product-modal';
 import productStore from '@/store/product';
 import Pagination from '@/components/pagination';
 import { getProducts } from '@/services/product';
 import usePageCount from '@/hooks/use-page-count';
-import ProductSkeleton from '@/components/product/product-skeleton';
 import ProductCard from '@/components/product/product-card';
 import ProductSelectCard from '@/components/product/product-select-row';
 import useViewport from '@/hooks/use-viewport';
 import useLockOverflow from '@/hooks/use-lock-overflow';
 import { getProductWrapperStyle } from '@/utils';
+
 import type { ApiProductResponse, Product as IProduct } from '@/types';
 
 export async function loader({ request }: any) {
@@ -33,7 +33,6 @@ const Product = () => {
   });
   const { selectedSize } = productStore();
   const navigate = useNavigate();
-  const navigation = useNavigation();
   const viewport = useViewport();
 
   useLockOverflow(showModal);
@@ -64,9 +63,7 @@ const Product = () => {
       </header>
       <div className="flex justify-center">
         <div className="w-full lg:w-auto">
-          {navigation.state === 'loading' ? (
-            <ProductSkeleton />
-          ) : data?.products.length ? (
+          {data?.products.length ? (
             <>
               <ul
                 className="grid grid-cols-1 place-items-center gap-8 lg:(grid-cols-4 gap-8)"

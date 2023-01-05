@@ -19,7 +19,7 @@ const activeLink = ({
   return isActive
     ? `${base} text-gray-700 font-bold dark:text-gray-200`
     : isPending
-    ? `${base} underline`
+    ? `${base} opacity-50`
     : base;
 };
 
