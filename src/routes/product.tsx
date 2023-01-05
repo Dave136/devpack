@@ -16,9 +16,9 @@ import type { ApiProductResponse, Product as IProduct } from '@/types';
 
 export async function loader({ request }: any) {
   const url = new URL(request.url);
-  const page = url.searchParams.get('page') ?? 0;
+  const page = Number(url.searchParams.get('page')) ?? 0;
   const data = await getProducts({
-    page: +page,
+    page,
   });
   return { data };
 }

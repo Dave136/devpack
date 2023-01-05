@@ -2,6 +2,10 @@
   @apply outline-none;
 }
 
+.BaseTable__body {
+  @apply dark:(bg-dark-400);
+}
+
 /* Dark mode for reactflow-controls */
 .react-flow__controls {
   @apply dark:(bg-dark-500 border border-dark-100);

@@ -1,8 +1,16 @@
 import { useEffect, useState } from 'react';
 import Table, { Column } from 'react-base-table';
-import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
+import {
+  Form,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+  useSubmit,
+} from 'react-router-dom';
+import { IoSearchOutline } from 'react-icons/io5';
 import { getUsers } from '@/services/user';
 import Pagination from '@/components/pagination';
+import SearchSpinner from '@/components/search-spinner';
 import UserModal from '@/components/user/user-modal';
 import usePageCount from '@/hooks/use-page-count';
 import useViewport from '@/hooks/use-viewport';
@@ -14,23 +22,30 @@ import type { ApiUserResponse, User as IUser } from '@/types';
 export async function loader({ request }: any) {
   const url = new URL(request.url);
   const page = Number(url.searchParams.get('page')) ?? 0;
+  const query = url.searchParams.get('q');
   const data = await getUsers({
     page,
+    query,
   });
-  return { data };
+  return { data, q: query };
 }
 
 const User = () => {
   const [user, setUser] = useState<IUser | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const { data } = useLoaderData() as { data: ApiUserResponse };
+  const { data, q } = useLoaderData() as { data: ApiUserResponse; q: string };
   const pageCount = usePageCount({
     total: data?.total,
   });
   const navigate = useNavigate();
   const navigation = useNavigation();
   const viewport = useViewport();
+  const submit = useSubmit();
+
+  const searching =
+    navigation.location &&
+    new URLSearchParams(navigation.location.search).has('q');
 
   useLockOverflow(showModal);
 
@@ -62,6 +77,11 @@ const User = () => {
       navigate('/user');
     }
   }, [currentPage]);
+
+  useEffect(() => {
+    const element = document.getElementById('q') as HTMLInputElement;
+    element.value = q;
+  }, [q]);
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     const newPage = selected + 1;
@@ -131,6 +151,38 @@ const User = () => {
   return (
     <>
       <div className="max-w-2xl mx-auto my-8">
+        <div>
+          <Form
+            id="search-form"
+            role="search"
+            className="mb-4 flex items-center relative"
+          >
+            <input
+              id="q"
+              aria-label="Search users"
+              className={`p-2 pl-8 border rounded-md text-sm outline-transparent transition focus:border-gray-500 dark:bg-zinc-800 dark:border-gray-600 dark:focus:border-gray-400 ${
+                searching ? 'opacity-50' : ''
+              }`}
+              placeholder="Search"
+              type="search"
+              name="q"
+              defaultValue={q}
+              onChange={(e) => {
+                const isFirstSearch = q == null;
+                submit(e.currentTarget.form, {
+                  replace: !isFirstSearch,
+                });
+              }}
+            />
+
+            {searching ? (
+              <SearchSpinner />
+            ) : (
+              <IoSearchOutline className="absolute left-2" />
+            )}
+            <div className="sr-only" aria-live="polite"></div>
+          </Form>
+        </div>
         <div className={getTableStyle()}>
           <Table
             data={data.users}
