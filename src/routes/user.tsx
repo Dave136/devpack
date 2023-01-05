@@ -157,7 +157,6 @@ const User = () => {
                 width={column.width}
                 headerClassName={column.headerClassName}
                 cellRenderer={column?.cellRenderer && column.cellRenderer}
-                sortable={column.sortable}
               />
             ))}
           </Table>
